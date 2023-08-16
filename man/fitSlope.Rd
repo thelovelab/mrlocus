@@ -26,7 +26,7 @@ SE are provided here)
 
 \item{sd_beta}{prior SD for beta A (default value will be derived from data)}
 
-\item{mu_alpha}{prior mean for \code{alpha} (default value will be derived from data)}
+\item{mu_alpha}{prior mean for \code{alpha} (default value of 0)}
 
 \item{sd_alpha}{prior SD for \code{alpha} (default value will be derived from data)}
 
@@ -52,6 +52,9 @@ see Supplementary Methods of the MRLocus manuscript.
 See vignette for example of model interpretation.
 }
 \details{
+Note that since v0.0.26, the default prior mean for alpha is 0,
+whereas in the paper it was derived from the data.
+
 Note that if summary statistics for only one SNP are provided
 a warning will be printed (this is not a recommended use
 of MRLocus) and a parametric simulation is used to estimate the

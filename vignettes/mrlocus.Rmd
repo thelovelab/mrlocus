@@ -269,6 +269,19 @@ much faster than the colocalization step.
 res <- fitSlope(res, iter=10000)
 ```
 
+# Normalized allelic spread
+
+We have found that a convenient statistic regarding the allelic
+dispersion `sigma`, which is comparable across loci, is to normalize
+by a typical value on the y-axis. We therefore normalize by the
+mediated effect for the mean of instrument effect sizes. This can be
+computed using the `normalizedAllelicSpread` function for a given fit
+object:
+
+```{r}
+normalizedAllelicSpread(res)
+```
+
 # Examine MRLocus estimates
 
 One of the elements in the results list `res` is the `stanfit` object,
@@ -307,17 +320,19 @@ Finally, we have a function which helps to assess the strength of the
 prior for the slope (alpha) and the dispersion around the fitted line
 (sigma). We generate a table showing the prior SD for these two
 parameters and the posterior SD from the fitted model. We note that
-the prior for both of these parameters is informative by design (so
+some of the parameters of the prior (SD of `beta`, the instrument
+effects, and SD of `alpha`, the slope) are informative by design (so
 ratios > 0.1 are not a problem per se), but it is not desired that the
 ratio of posterior to prior SD approach 1. 
 
 We additionally generate two plots, the first plot generates parameters
 from the prior and the model, showing the possible values for `alpha`,
 `beta_a` and `beta_b` (the true effect sizes from the two studies). In
-the second plot, `alpha` is fixed to the prior mean to better visually
-identify the simulated values for `sigma`. The blue X's indicate the
-fitted estimates of `beta_a` and `beta_b` from the colocalization
-step, and the blue lines indicate the posterior for `alpha`.
+the second plot, `alpha` is fixed to the prior mean (by default, 0) to
+better visually identify the simulated values for `sigma`. The blue
+X's indicate the fitted estimates of `beta_a` and `beta_b` from the
+colocalization step, and the blue lines indicate the posterior for
+`alpha`.
 
 ```{r priorCheck}
 priorCheck(res)

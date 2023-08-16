@@ -81,10 +81,11 @@ to be compiled.
 
 ```
 library(devtools)
-install_github("mikelove/mrlocus")
+install_github("thelovelab/mrlocus")
 ```
 
 ### Issues
 
 For bug reports, feature requests, or questions, please post 
-[here](https://github.com/mikelove/mrlocus/issues/new/choose).
+[here](https://github.com/thelovelab/mrlocus/issues/new/choose).
+

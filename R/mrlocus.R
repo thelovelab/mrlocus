@@ -100,6 +100,9 @@ fitBetaColoc <- function(beta_hat_a, beta_hat_b,
 #' see Supplementary Methods of the MRLocus manuscript.
 #' See vignette for example of model interpretation.
 #'
+#' Note that since v0.0.26, the default prior mean for alpha is 0,
+#' whereas in the paper it was derived from the data.
+#' 
 #' Note that if summary statistics for only one SNP are provided
 #' a warning will be printed (this is not a recommended use
 #' of MRLocus) and a parametric simulation is used to estimate the
@@ -115,7 +118,7 @@ fitBetaColoc <- function(beta_hat_a, beta_hat_b,
 #' \item {alleles} (optional) data.frame with allele information
 #' }
 #' @param sd_beta prior SD for beta A (default value will be derived from data)
-#' @param mu_alpha prior mean for \code{alpha} (default value will be derived from data)
+#' @param mu_alpha prior mean for \code{alpha} (default value of 0)
 #' @param sd_alpha prior SD for \code{alpha} (default value will be derived from data)
 #' @param sd_sigma prior SD for \code{sigma} (default value of 1)
 #' @param ... further arguments passed to \code{rstan::sampling}
@@ -157,7 +160,8 @@ fitSlope <- function(res,
   lmfit <- lm(res$beta_hat_b ~ res$beta_hat_a + 0)
   lmsum <- summary(lmfit)$coefficients
   if (is.null(mu_alpha)) {
-    mu_alpha <- lmsum[1,1]
+    # mu_alpha <- lmsum[1,1] # the prior used in the paper
+    mu_alpha <- 0 # just use zero-centered prior
   }
   if (is.null(sd_alpha)) {
     sd_alpha <- 2*abs(lmsum[1,1])

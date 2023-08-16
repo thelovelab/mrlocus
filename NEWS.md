@@ -1,3 +1,7 @@
+# mrlocus 0.0.26
+
+* Changed the default prior mean for `alpha` to 0 in `fitSlope`.
+
 # mrlocus 0.0.25
 
 * Add convenience function `normalizedAllelicSpread`, a useful

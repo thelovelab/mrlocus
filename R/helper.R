@@ -681,7 +681,8 @@ plotMrlocus <- function(res,
 #' The posterior-over-prior SD ratio is calculated
 #' and returned in a table, and two plots are made
 #' that show parameters drawn from the estimated
-#' priors (in MRLocus, priors are estimated from the data).
+#' priors (in MRLocus, two priors are estimated from the data -
+#' the SD of beta, the instrument effects, and the SD of alpha, the slope).
 #' Alternatively, the prior predictive draws themselves can
 #' be returned instead of the table (by setting \code{type=2}).
 #' 
@@ -695,8 +696,8 @@ plotMrlocus <- function(res,
 #' We note that an 'informative prior' alone is not
 #' problematic for MRLocus, and the prior estimation steps
 #' have been designed to be informative as
-#' to reasonable values for the parameters alpha
-#' and sigma.
+#' to reasonable values for some of the prior parameters of
+#' alpha and sigma.
 #'
 #' The plots show parameters generated
 #' from the prior and the model. The simulated true values of
@@ -704,8 +705,8 @@ plotMrlocus <- function(res,
 #' circles (summary statistics would then be drawn from
 #' these according to the reported SEs, but this step
 #' of the model is omitted in this plot).
-#' The two plots differ in that the second plot fixed
-#' alpha instead of drawing it from the model
+#' The two plots differ in that the second plot uses fixed
+#' alpha (fixed to the prior mean) instead of drawing it from the model
 #' (so that the prior for sigma can better be visualized).
 #' The fitted estimates of \code{beta_a} and \code{beta_b}
 #' from the colocalization step are shown as blue X's.
